@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">DigiBonSS</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Seva Service</string>
+    <string name="nav_header_subtitle">info@seva-service.be</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_customers">Customers</string>
+    <string name="action_workorders">Work Orders</string>
+    <string name="action_schedule">Schedule</string>
+    <string name="main_title">Welcome!</string>
+    <string name="main_subtitle">Let\'s get to work...</string>
+    <string name="title_customer_list">Customers</string>
+    <string name="title_customer_detail">Customer Detail</string>
+</resources>
