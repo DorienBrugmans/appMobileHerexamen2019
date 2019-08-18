@@ -1,10 +1,14 @@
 package com.pxl.dorienbrugmans.digibonss;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
@@ -18,21 +22,20 @@ import android.view.MenuItem;
  */
 public class CustomerDetailActivity extends AppCompatActivity {
 
+    protected boolean isLightTheme;
+    protected SharedPreferences sharedPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), false);
+        setAppTheme(isLightTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_detail);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
@@ -55,11 +58,29 @@ public class CustomerDetailActivity extends AppCompatActivity {
             Bundle arguments = new Bundle();
             arguments.putString(CustomerDetailFragment.ARG_ITEM_ID,
                     getIntent().getStringExtra(CustomerDetailFragment.ARG_ITEM_ID));
+            arguments.putBoolean(CustomerDetailFragment.IS_LIGHT_THEME, isLightTheme);
             CustomerDetailFragment fragment = new CustomerDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.customer_detail_container, fragment)
                     .commit();
+        }
+    }
+
+    protected void setAppTheme(boolean isLightTheme) {
+        if (isLightTheme) {
+            setTheme(R.style.AppTheme);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Log.d("config changed", "landscape");
+            onBackPressed();
         }
     }
 

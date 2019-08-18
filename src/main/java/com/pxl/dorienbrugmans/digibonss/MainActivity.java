@@ -1,8 +1,11 @@
 package com.pxl.dorienbrugmans.digibonss;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
@@ -23,9 +26,18 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    protected boolean isLightTheme;
+    protected SharedPreferences sharedPref;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setPreferences();
+        //setPreferences();
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), false);
+        setAppTheme(isLightTheme);
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -35,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         myCustomerButton.setOnClickListener(new View.OnClickListener() {
               @Override
                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, CustomersListRcv.class));
+                    startActivity(new Intent(MainActivity.this, CustomersListRcv.class)); // change back
                      }
                 });
 
@@ -74,6 +86,24 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    protected void setAppTheme(boolean isDarkTheme) {
+        if (isDarkTheme) {
+            setTheme(R.style.AppTheme_Dark);
+        } else {
+            setTheme(R.style.AppTheme);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean currentTheme = isLightTheme;
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), false);
+        if (currentTheme != isLightTheme)
+            recreate();
+    }
+
+/*
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -83,6 +113,7 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -148,11 +179,13 @@ public class MainActivity extends AppCompatActivity
         boolean setTheme = preferences.getBoolean(getString(R.string.pref_show_bass_key),
                 getResources().getBoolean(R.bool.pref_show_bass_default));
         if (setTheme == true){
-            setTheme(R.style.AppTheme);
-        }
-        else{
             setTheme(R.style.AppTheme_Dark);
         }
+        else{
+            setTheme(R.style.AppTheme);
+        }
     }
+
+
 
 }

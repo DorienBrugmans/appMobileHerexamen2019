@@ -40,10 +40,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pxl.dorienbrugmans.digibonss.CustomerListActivity" />
         </activity>
-        <activity android:name=".CustomersListRcv" />
+        <activity android:name=".CustomersListRcv"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".CustomerDetails" />
         <activity
             android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity"
             android:label="@string/action_settings"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

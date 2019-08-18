@@ -2,6 +2,8 @@ package com.pxl.dorienbrugmans.digibonss;
 
 
 import android.content.Context;
+import android.database.Cursor;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,15 +20,24 @@ public class CustomersListAdapter extends RecyclerView.Adapter<CustomersListAdap
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
+    private final Context mContext;
+    private Cursor mCursor;
+
+    private final boolean mTwoPane;
+
     // Provide a suitable constructor (depends on the kind of dataset)
-    public CustomersListAdapter(Context context, List<DummyContent.Customer> data) {
+    public CustomersListAdapter(@NonNull Context context, List<DummyContent.Customer> data, boolean twoPane) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
+        mContext = context;
+        mTwoPane = twoPane;
     }
 
+
     // inflates the row layout from xml when needed
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.activity_customers_list_rcv_item, parent, false);
         return new ViewHolder(view);
     }
@@ -62,7 +73,7 @@ public class CustomersListAdapter extends RecyclerView.Adapter<CustomersListAdap
         TextView myTextView;
         ImageView image;
 
-        ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.myTextView);
             image = itemView.findViewById(R.id.myImageView);

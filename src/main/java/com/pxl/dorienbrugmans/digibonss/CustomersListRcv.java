@@ -7,6 +7,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NavUtils;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,6 +43,7 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
     String url = "https://raw.githubusercontent.com/DorienBrugmans/appMobileHerexamen2019/master/Customers.json";
     String responseJSON = "";
 
+    private boolean mTwoPane;
 
 
     @Override
@@ -46,58 +51,27 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
         setPreferences();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customers_list_rcv);
+        setContentView(R.layout.activity_customer_list);
 
-        makeGithubSearchQuery();
-/*
-        Customers.add(new DummyContent.Customer(1, "Dorien", "Engelbamp", "0123456789", "logo"));
-        Customers.add(new DummyContent.Customer(2, "Joeri", "Engelbamp", "0123456789", "badkamer"));
-        Customers.add(new DummyContent.Customer(3, "Yuna", "Engelbamp", "0123456789", "badkamer"));
-        Customers.add(new DummyContent.Customer(4, "Ymke", "Engelbamp", "0123456789", "logo"));
-        Customers.add(new DummyContent.Customer(5, "Yinthe", "Engelbamp", "0123456789", "logo"));
-        Customers.add(new DummyContent.Customer(6, "Laika", "Engelbamp", "0123456789", "badkamer"));
-        Customers.add(new DummyContent.Customer(7, "Lexa", "Engelbamp", "0123456789", "logo"));
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle(getTitle());
 
-        StringBuffer response = new StringBuffer();
-        HttpURLConnection conn = null;
-        try {
-            URL url = new URL("https://raw.githubusercontent.com/DorienBrugmans/appMobileHerexamen2019/master/Customers.json");
-
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setDoOutput(false);
-            conn.setDoInput(true);
-            conn.setUseCaches(false);
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
-
-            // handle the response
-            int status = conn.getResponseCode();
-            if (status != 200) {
-                throw new IOException("Post failed with error code " + status);
-            } else {
-                BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-            }
-        } catch (Exception e) {
-            //e.printStackTrace();
-            Log.e("Error HTTP Call: ", e.getMessage());
-        } finally {
-            if (conn != null) {
-                conn.disconnect();
-            }
+        // Show the Up button in the action bar.
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        //Here is your json in string format
-        String responseJSON = response.toString();
-        Log.i("json string:::: ", responseJSON);
+        if (findViewById(R.id.customer_detail_container) != null) {
+            // The detail container view will be present only in the
+            // landscape mode.
+            // If this view is present, then the
+            // activity should be in two-pane mode.
+            mTwoPane = true;
+        }
 
-
-*/
-
+        makeGithubSearchQuery();
 
         try {
             Thread.sleep(5000);
@@ -106,17 +80,26 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
         }
 
         Gson gson = new Gson();
-        ArrayList<DummyContent.Customer> newList = new ArrayList<>();
-        newList = gson.fromJson(responseJSON, new TypeToken<List<DummyContent.Customer>>(){}.getType());
+        //ArrayList<DummyContent.Customer> newList = new ArrayList<>();
+        Customers = gson.fromJson(responseJSON, new TypeToken<List<DummyContent.Customer>>(){}.getType());
 
         // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.customer_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CustomersListAdapter(this, newList); // newList
+        adapter = new CustomersListAdapter(this, Customers, mTwoPane); // newList
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     private void makeGithubSearchQuery() {
         String githubQuery = url;
@@ -152,7 +135,7 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(CustomersListRcv.this, CustomerDetails.class);
+        Intent intent = new Intent(CustomersListRcv.this, CustomerDetailActivity.class);
         int id = Customers.get(position).getId();
         intent.putExtra("Id", id);
         startActivity(intent);
@@ -180,6 +163,18 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
             Toast.makeText(context, message, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(CustomersListRcv.this, SettingsActivity.class);
             startActivity(intent);
+            return true;
+        }
+
+        if (id == android.R.id.home) {
+            // This ID represents the Home or Up button. In the case of this
+            // activity, the Up button is shown. Use NavUtils to allow users
+            // to navigate up one level in the application structure. For
+            // more details, see the Navigation pattern on Android Design:
+            //
+            // http://developer.android.com/design/patterns/navigation.html#up-vs-back
+            //
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 

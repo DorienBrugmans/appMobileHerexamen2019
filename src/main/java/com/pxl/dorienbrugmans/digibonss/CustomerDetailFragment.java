@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.pxl.dorienbrugmans.digibonss.dummy.DummyContent;
+import com.pxl.dorienbrugmans.digibonss.utilities.NetworkUtils;
 
 /**
  * A fragment representing a single Customer detail screen.
@@ -23,12 +24,12 @@ public class CustomerDetailFragment extends Fragment {
      * represents.
      */
     public static final String ARG_ITEM_ID = "item_id";
-
+    public static final String IS_LIGHT_THEME = "is_light_theme";
     /**
      * The dummy content this fragment is presenting.
      */
     private DummyContent.Customer mItem;
-
+    private boolean isLightTheme;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -44,13 +45,23 @@ public class CustomerDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            mItem = DummyContent.CUSTOMERS.get(3);
+            mItem = NetworkUtils.GetCustomers().get(getArguments().getInt(ARG_ITEM_ID));
+            isLightTheme = getArguments().getBoolean(IS_LIGHT_THEME);
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 appBarLayout.setTitle(mItem.name);
             }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) getActivity().findViewById(R.id.toolbar_layout);
+        if (appBarLayout != null) {
+            appBarLayout.setTitle(mItem.name);
         }
     }
 
@@ -65,5 +76,5 @@ public class CustomerDetailFragment extends Fragment {
         }
 
         return rootView;
-    }
+    } // Hier nog details aanvullen (image, ...)
 }
