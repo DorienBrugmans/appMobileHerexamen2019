@@ -41,7 +41,12 @@
                 android:value="com.pxl.dorienbrugmans.digibonss.CustomerListActivity" />
         </activity>
         <activity android:name=".CustomersListRcv" />
-        <activity android:name=".CustomerDetails"></activity>
+        <activity android:name=".CustomerDetails" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

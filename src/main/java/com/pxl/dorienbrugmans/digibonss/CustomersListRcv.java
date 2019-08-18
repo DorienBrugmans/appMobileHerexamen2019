@@ -4,7 +4,9 @@ package com.pxl.dorienbrugmans.digibonss;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,6 +43,8 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setPreferences();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customers_list_rcv);
 
@@ -174,9 +178,23 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
             Context context = CustomersListRcv.this;
             String message = "Settings clicked";
             Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(CustomersListRcv.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setPreferences() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean setTheme = preferences.getBoolean(getString(R.string.pref_show_bass_key),
+                getResources().getBoolean(R.bool.pref_show_bass_default));
+        if (setTheme == true){
+            setTheme(R.style.AppTheme);
+        }
+        else{
+            setTheme(R.style.AppTheme_Dark);
+        }
     }
 }
