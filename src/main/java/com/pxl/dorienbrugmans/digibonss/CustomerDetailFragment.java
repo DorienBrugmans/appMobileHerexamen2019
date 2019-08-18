@@ -73,6 +73,7 @@ public class CustomerDetailFragment extends Fragment {
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.customer_detail)).setText(mItem.address);
+            ((TextView) rootView.findViewById(R.id.customer_detail_overview)).setText(mItem.phone);
         }
 
         return rootView;

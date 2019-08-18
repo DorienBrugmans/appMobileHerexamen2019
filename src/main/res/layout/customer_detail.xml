@@ -1,10 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/customer_detail"
-    style="?android:attr/textAppearanceLarge"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:textIsSelectable="true"
-    tools:context=".CustomerDetailFragment" />
+    android:layout_margin="0dp"
+    android:padding="0dp">
+
+   <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="0dp"
+        android:padding="0dp">
+
+       <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:tools="http://schemas.android.com/tools"
+           android:id="@+id/customer_detail"
+           style="?android:attr/textAppearanceLarge"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:padding="16dp"
+           android:textIsSelectable="true"
+           tools:context=".CustomerDetailFragment"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.0"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent"/>
+
+       <TextView
+           android:id="@+id/customer_detail_overview"
+           style="?android:attr/textAppearanceLarge"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="4dp"
+           android:layout_marginTop="4dp"
+           android:layout_marginEnd="4dp"
+           android:padding="16dp"
+           android:textIsSelectable="true"
+           android:textSize="20sp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/customer_detail"
+           tools:context=".MovieDetailFragment" />
+
+
+       <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="241dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/text_margin"
+            android:paddingTop="2dp"
+            android:weightSum="100"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customer_detail_overview">
+
+            <!--<ImageView
+                android:id="@+id/star_icon"
+                android:layout_width="7dp"
+                android:layout_height="24dp"
+                android:layout_weight="10"
+                android:contentDescription="@string/star_icon_description"
+                app:srcCompat="@drawable/ic_star_filled" />-->
+
+            <!--<TextView
+                android:id="@+id/movie_detail_vote_average"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="50"
+                android:gravity="start"
+                android:textColor="?attr/secondaryTextColor"
+                android:textSize="@dimen/font_size_item_details" />-->
+
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

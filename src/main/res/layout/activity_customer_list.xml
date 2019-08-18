@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".CustomerListActivity">
+    tools:context=".CustomersListRcv">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -21,8 +21,10 @@
 
     </android.support.design.widget.AppBarLayout>
 
+
+    <!--id/frameLayout-->
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/recycler_view_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">

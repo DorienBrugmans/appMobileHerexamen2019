@@ -43,12 +43,17 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
     String url = "https://raw.githubusercontent.com/DorienBrugmans/appMobileHerexamen2019/master/Customers.json";
     String responseJSON = "";
 
+    protected boolean isLightTheme;
+    protected SharedPreferences sharedPref;
+
     private boolean mTwoPane;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setPreferences();
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), false);
+        setAppTheme(isLightTheme);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_list);
@@ -181,6 +186,23 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean currentTheme = isLightTheme;
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), false);
+        if (currentTheme != isLightTheme)
+            recreate();
+    }
+
+    protected void setAppTheme(boolean isLightTheme) {
+        if (isLightTheme) {
+            setTheme(R.style.AppTheme);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
+        }
+    }
+/*
     private void setPreferences() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         boolean setTheme = preferences.getBoolean(getString(R.string.pref_show_bass_key),
@@ -192,4 +214,5 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
             setTheme(R.style.AppTheme_Dark);
         }
     }
+*/
 }
