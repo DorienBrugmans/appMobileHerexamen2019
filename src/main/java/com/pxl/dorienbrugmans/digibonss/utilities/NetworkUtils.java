@@ -1,13 +1,20 @@
 package com.pxl.dorienbrugmans.digibonss.utilities;
 
+
 import android.net.Uri;
 import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.pxl.dorienbrugmans.digibonss.R;
+import com.pxl.dorienbrugmans.digibonss.dummy.DummyContent;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -15,8 +22,11 @@ public class NetworkUtils {
     final static String GITHUB_BASE_URL =
             "https://raw.githubusercontent.com/DorienBrugmans/MobileApp2019/master/Customers.json";
 
-    public static URL buildUrl() {
-        Uri builtUri = Uri.parse(GITHUB_BASE_URL).buildUpon()
+
+
+    //*************************************************************************************
+    public static URL buildUrl(String urlString) {
+        Uri builtUri = Uri.parse(urlString).buildUpon()
                 .build();
 
         URL url = null;
@@ -24,35 +34,44 @@ public class NetworkUtils {
             url = new URL(builtUri.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            Log.e("error build url", "buildUrl: " + e.getMessage());
         }
 
         return url;
     }
 
-    /**
-     * This method returns the entire result from the HTTP response.
-     *
-     * @param url The URL to fetch the HTTP response from.
-     * @return The contents of the HTTP response.
-     * @throws IOException Related to network and stream reading
-     */
-    public static String getResponseFromHttpUrl(URL url) throws IOException {
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+    public static List<DummyContent.Customer> GetCustomers() {
         try {
-            InputStream in = urlConnection.getInputStream();
+            String customers = getResponseFromHttpUrl(buildUrl(GITHUB_BASE_URL));
 
-            Scanner scanner = new Scanner(in);
-            scanner.useDelimiter("\\A");
+            Gson gson = new Gson();
 
-            boolean hasInput = scanner.hasNext();
-            if (hasInput) {
-                return scanner.next();
-            } else {
-                return null;
-            }
-        } finally {
-            urlConnection.disconnect();
+            TypeToken<List<DummyContent.Customer>> token = new TypeToken<List<DummyContent.Customer>>() {};
+            List<DummyContent.Customer> customersList = gson.fromJson(customers, token.getType());
+
+            return customersList;
+        } catch(IOException e) {
+            Log.e("Get Customers", e.getMessage());
+            return null;
         }
     }
+
+
+        public static String getResponseFromHttpUrl(URL url) throws IOException {
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            try {
+                InputStream in = urlConnection.getInputStream();
+
+                Scanner scanner = new Scanner(in);
+                scanner.useDelimiter("\\A");
+
+                boolean hasInput = scanner.hasNext();
+                if (hasInput) {
+                    return scanner.next();
+                } else {
+                    return null;
+                }
+            } finally {
+                urlConnection.disconnect();
+            }
+        }
 }

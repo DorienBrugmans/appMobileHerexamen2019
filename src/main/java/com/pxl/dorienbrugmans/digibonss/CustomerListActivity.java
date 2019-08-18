@@ -2,13 +2,12 @@ package com.pxl.dorienbrugmans.digibonss;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,21 +20,14 @@ import com.pxl.dorienbrugmans.digibonss.dummy.DummyContent;
 
 import java.util.List;
 
-/**
- * An activity representing a list of Customers. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link CustomerDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- */
+import static com.pxl.dorienbrugmans.digibonss.utilities.NetworkUtils.GetCustomers;
+
+
 public class CustomerListActivity extends AppCompatActivity {
 
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
     private boolean mTwoPane;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +38,6 @@ public class CustomerListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -91,22 +75,22 @@ public class CustomerListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.CUSTOMERS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, GetCustomers(), mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final CustomerListActivity mParentActivity;
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<DummyContent.Customer> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+                DummyContent.Customer item = (DummyContent.Customer) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(CustomerDetailFragment.ARG_ITEM_ID, item.id);
+                    arguments.putString(CustomerDetailFragment.ARG_ITEM_ID, Integer.toString(item.id));
                     CustomerDetailFragment fragment = new CustomerDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -123,7 +107,7 @@ public class CustomerListActivity extends AppCompatActivity {
         };
 
         SimpleItemRecyclerViewAdapter(CustomerListActivity parent,
-                                      List<DummyContent.DummyItem> items,
+                                      List<DummyContent.Customer> items,
                                       boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
@@ -135,6 +119,7 @@ public class CustomerListActivity extends AppCompatActivity {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.customer_list_content, parent, false);
             return new ViewHolder(view);
+            // Make new layouts per row
         }
 
         @Override
@@ -144,12 +129,13 @@ public class CustomerListActivity extends AppCompatActivity {
 
             holder.itemView.setTag(mValues.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
+            //Fill new rows with data from cursor
         }
 
         @Override
         public int getItemCount() {
             return mValues.size();
-        }
+        }// get number of elements in the cursor to know the number of rows
 
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mIdView;

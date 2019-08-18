@@ -3,6 +3,7 @@
     package="com.pxl.dorienbrugmans.digibonss">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,6 +40,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.pxl.dorienbrugmans.digibonss.CustomerListActivity" />
         </activity>
+        <activity android:name=".CustomersListRcv" />
+        <activity android:name=".CustomerDetails"></activity>
     </application>
 
 </manifest>

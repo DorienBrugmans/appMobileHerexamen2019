@@ -27,7 +27,7 @@ public class CustomerDetailFragment extends Fragment {
     /**
      * The dummy content this fragment is presenting.
      */
-    private DummyContent.DummyItem mItem;
+    private DummyContent.Customer mItem;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
