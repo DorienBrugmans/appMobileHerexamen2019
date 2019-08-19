@@ -2,8 +2,10 @@ package com.pxl.dorienbrugmans.digibonss;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -28,9 +30,15 @@ public class CustomerListActivity extends AppCompatActivity {
     private boolean mTwoPane;
 
 
+    protected boolean isLightTheme;
+    protected SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), getResources().getBoolean(R.bool.pref_show_bass_default));
+        //setAppTheme(isLightTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_list);
 

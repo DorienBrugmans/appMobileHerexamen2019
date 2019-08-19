@@ -14,22 +14,19 @@
         android:layout_margin="0dp"
         android:padding="0dp">
 
-       <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-           xmlns:tools="http://schemas.android.com/tools"
-           android:id="@+id/customer_detail"
-           style="?android:attr/textAppearanceLarge"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:padding="16dp"
-           android:textIsSelectable="true"
-           tools:context=".CustomerDetailFragment"
+       <ImageView
+           android:id="@+id/customer_image"
+           android:layout_width="250dp"
+           android:layout_height="150dp"
+           android:adjustViewBounds="true"
+           android:scaleType="fitCenter"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintHorizontal_bias="0.0"
            app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent"/>
+           app:layout_constraintTop_toTopOf="parent" />
 
        <TextView
-           android:id="@+id/customer_detail_overview"
+           android:id="@+id/customer_address"
            style="?android:attr/textAppearanceLarge"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
@@ -38,13 +35,30 @@
            android:layout_marginEnd="4dp"
            android:padding="16dp"
            android:textIsSelectable="true"
-           android:textSize="20sp"
+           android:textSize="@dimen/text_size_standard"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/customer_detail"
-           tools:context=".MovieDetailFragment" />
+           app:layout_constraintTop_toBottomOf="@+id/customer_image"
+            />
+
+       <TextView
+           android:id="@+id/customer_phone"
+           style="?android:attr/textAppearanceLarge"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="4dp"
+           android:layout_marginTop="4dp"
+           android:layout_marginEnd="4dp"
+           android:padding="16dp"
+           android:textIsSelectable="true"
+           android:textSize="@dimen/text_size_standard"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/customer_address" />
 
 
+
+<!--
        <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="241dp"
@@ -59,17 +73,10 @@
             android:weightSum="100"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/customer_detail_overview">
+            app:layout_constraintTop_toBottomOf="@+id/customer_phone">
 
-            <!--<ImageView
-                android:id="@+id/star_icon"
-                android:layout_width="7dp"
-                android:layout_height="24dp"
-                android:layout_weight="10"
-                android:contentDescription="@string/star_icon_description"
-                app:srcCompat="@drawable/ic_star_filled" />-->
 
-            <!--<TextView
+            &lt;!&ndash;<TextView
                 android:id="@+id/movie_detail_vote_average"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,8 +84,9 @@
                 android:layout_weight="50"
                 android:gravity="start"
                 android:textColor="?attr/secondaryTextColor"
-                android:textSize="@dimen/font_size_item_details" />-->
+                android:textSize="@dimen/font_size_item_details" />&ndash;&gt;
 
         </LinearLayout>
+-->
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

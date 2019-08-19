@@ -53,11 +53,17 @@ public class CustomerDetailActivity extends AppCompatActivity {
         // http://developer.android.com/guide/components/fragments.html
         //
         if (savedInstanceState == null) {
+            Intent intent = getIntent();
+            int id = 1;
+            if (intent.hasExtra("Id"))
+            {
+                id = intent.getIntExtra("Id", 1) -1;
+            }
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(CustomerDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(CustomerDetailFragment.ARG_ITEM_ID));
+            arguments.putInt(CustomerDetailFragment.ARG_ITEM_ID,
+                    id);
             arguments.putBoolean(CustomerDetailFragment.IS_LIGHT_THEME, isLightTheme);
             CustomerDetailFragment fragment = new CustomerDetailFragment();
             fragment.setArguments(arguments);

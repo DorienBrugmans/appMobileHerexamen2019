@@ -21,8 +21,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
-    <!--id/frameLayout-->
     <FrameLayout
         android:id="@+id/recycler_view_container"
         android:layout_width="match_parent"

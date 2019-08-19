@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -48,11 +49,16 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
 
     private boolean mTwoPane;
 
+    private CustomersListAdapter mCustomerAdapter;
+
+    private FrameLayout mRecyclerViewContainer;
+    private FrameLayout mEmptyListContainer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), false);
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), getResources().getBoolean(R.bool.pref_show_bass_default));
         setAppTheme(isLightTheme);
 
         super.onCreate(savedInstanceState);
@@ -85,13 +91,15 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
         }
 
         Gson gson = new Gson();
-        //ArrayList<DummyContent.Customer> newList = new ArrayList<>();
         Customers = gson.fromJson(responseJSON, new TypeToken<List<DummyContent.Customer>>(){}.getType());
+
+
+
 
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.customer_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CustomersListAdapter(this, Customers, mTwoPane); // newList
+        adapter = new CustomersListAdapter(this, Customers, mTwoPane);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
@@ -189,17 +197,5 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
             setTheme(R.style.AppTheme_Dark);
         }
     }
-/*
-    private void setPreferences() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean setTheme = preferences.getBoolean(getString(R.string.pref_show_bass_key),
-                getResources().getBoolean(R.bool.pref_show_bass_default));
-        if (setTheme == true){
-            setTheme(R.style.AppTheme);
-        }
-        else{
-            setTheme(R.style.AppTheme_Dark);
-        }
-    }
-*/
+
 }

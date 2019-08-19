@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pxl.dorienbrugmans.digibonss.dummy.DummyContent;
@@ -23,7 +24,7 @@ public class CustomerDetailFragment extends Fragment {
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    public static final String ARG_ITEM_ID = "item_id";
+    public static final String ARG_ITEM_ID = "Id";
     public static final String IS_LIGHT_THEME = "is_light_theme";
     /**
      * The dummy content this fragment is presenting.
@@ -72,10 +73,12 @@ public class CustomerDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.customer_detail)).setText(mItem.address);
-            ((TextView) rootView.findViewById(R.id.customer_detail_overview)).setText(mItem.phone);
+            int id = getResources().getIdentifier(mItem.imageUrl, "drawable", "com.pxl.dorienbrugmans.digibonss");
+            ((ImageView) rootView.findViewById(R.id.customer_image)).setImageResource(id);
+            ((TextView) rootView.findViewById(R.id.customer_address)).setText("Address: " +mItem.address);
+            ((TextView) rootView.findViewById(R.id.customer_phone)).setText("Phone: " +mItem.phone);
         }
 
         return rootView;
-    } // Hier nog details aanvullen (image, ...)
+    }
 }
