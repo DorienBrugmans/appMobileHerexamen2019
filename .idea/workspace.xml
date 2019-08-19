@@ -21,12 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="97e6b7ea-9602-43b8-bba0-f3a0b3d25c2a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerDetailFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerDetailFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomersListRcv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomersListRcv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout-w900dp/customer_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout-w900dp/customer_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_customer_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_customer_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/customer_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/customer_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/customer_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/customer_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,69 +46,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CustomerDetailActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerDetailActivity.java">
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="64" column="55" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="55" />
+            <state relative-caret-position="120">
+              <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomersListRcv.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomersListRcv.java">
+      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/res/values-v21/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1059">
-              <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1901#1939#0" expanded="true" />
-                <element signature="method#makeGithubSearchQuery#0;class#CustomersListRcv#0" />
-                <element signature="class#GithubQueryTask#0;class#CustomersListRcv#0" />
-                <element signature="method#onCreateOptionsMenu#0;class#CustomersListRcv#0" />
-                <element signature="method#onOptionsItemSelected#0;class#CustomersListRcv#0" />
-                <element signature="e#6964#7002#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomerDetailFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerDetailFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomerDetails.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerDetails.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="59" selection-start-line="10" selection-start-column="59" selection-end-line="10" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomersListAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomersListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DummyContent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/dummy/DummyContent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-            </state>
+            <state />
           </provider>
         </entry>
       </file>
@@ -126,6 +73,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>item</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -2397,7 +2349,6 @@
         <option value="$PROJECT_DIR$/src/main/res/layout/content_menu.xml" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_customers_list_rcv_item.xml" />
         <option value="$PROJECT_DIR$/src/main/res/menu/main.xml" />
-        <option value="$PROJECT_DIR$/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/src/main/res/values/bools.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/VisualizerActivity.java" />
@@ -2412,7 +2363,6 @@
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerDetailActivity.java" />
         <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/MainActivity.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/utilities/NotificationUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/SettingsFragment.java" />
@@ -2425,6 +2375,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/dummy/DummyContent.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomersListAdapter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomersListRcv.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/MainActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/values/styles.xml" />
       </list>
     </option>
   </component>
@@ -2498,6 +2450,13 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="app" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+              <item name="styles" type="c431d0b8:AndroidResGroupNode" />
             </path>
             <path>
               <item name="app" type="1abcf292:AndroidViewProjectNode" />
@@ -2668,7 +2627,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566162152793</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="minor adjustments">
+      <created>1566169826991</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1566169826991</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2748,7 +2714,8 @@
     <MESSAGE value="Recycle view and HTTP cal working" />
     <MESSAGE value="Preferences added" />
     <MESSAGE value="add notification and master/detail" />
-    <option name="LAST_COMMIT_MESSAGE" value="add notification and master/detail" />
+    <MESSAGE value="minor adjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor adjustments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2782,7 +2749,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/app_bar.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/JSONArrayCursor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1768">
@@ -2889,13 +2855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="37" column="64" lean-forward="true" selection-start-line="37" selection-start-column="64" selection-end-line="37" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -3032,16 +2991,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/customer_list_content.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -3065,24 +3014,6 @@
           <caret line="34" column="54" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" />
           </folding>
         </state>
       </provider>
@@ -3157,13 +3088,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="64" column="55" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerListActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
@@ -3189,13 +3113,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/dummy/DummyContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomersListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -3206,10 +3123,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomerDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/CustomersListRcv.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1059">
-          <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+        <state relative-caret-position="56">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1901#1939#0" expanded="true" />
@@ -3219,6 +3143,64 @@
             <element signature="method#onOptionsItemSelected#0;class#CustomersListRcv#0" />
             <element signature="e#6964#7002#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-720">
+          <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1284#1322#0" expanded="true" />
+            <element signature="e#1574#1817#0" expanded="true" />
+            <element signature="e#1816#1817#0" expanded="true" />
+            <element signature="e#1940#2253#0" expanded="true" />
+            <element signature="e#2252#2253#0" expanded="true" />
+            <element signature="e#2374#2690#0" expanded="true" />
+            <element signature="e#2689#2690#0" expanded="true" />
+            <element signature="e#3007#3038#0" expanded="true" />
+            <element signature="e#3040#3072#0" expanded="true" />
+            <element signature="e#3665#3703#0" expanded="true" />
+            <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" />
+            <element signature="e#6269#6307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/pxl/dorienbrugmans/digibonss/dummy/DummyContent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values-v21/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
         </state>
       </provider>
     </entry>

@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //setPreferences();
+        setPreferences();
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), false);
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), true);
         setAppTheme(isLightTheme);
 
 
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         myCustomerButton.setOnClickListener(new View.OnClickListener() {
               @Override
                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, CustomersListRcv.class)); // change back
+                    startActivity(new Intent(MainActivity.this, CustomersListRcv.class));
                      }
                 });
 
@@ -69,9 +69,6 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();            }
         });
 
-
-
-
         // Add toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,11 +83,11 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    protected void setAppTheme(boolean isDarkTheme) {
-        if (isDarkTheme) {
-            setTheme(R.style.AppTheme_Dark);
-        } else {
+    protected void setAppTheme(boolean isLightTheme) {
+        if (isLightTheme) {
             setTheme(R.style.AppTheme);
+        } else {
+            setTheme(R.style.AppTheme_Dark);
         }
     }
 
@@ -102,18 +99,6 @@ public class MainActivity extends AppCompatActivity
         if (currentTheme != isLightTheme)
             recreate();
     }
-
-/*
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

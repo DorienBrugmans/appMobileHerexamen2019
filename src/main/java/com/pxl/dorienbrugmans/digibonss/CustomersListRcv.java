@@ -96,16 +96,6 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
         recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
     private void makeGithubSearchQuery() {
         String githubQuery = url;
         URL githubSearchUrl = NetworkUtils.buildUrl(githubQuery);
@@ -135,8 +125,6 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
         }
     }
 
-
-
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
@@ -145,7 +133,6 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
         intent.putExtra("Id", id);
         startActivity(intent);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
