@@ -1,64 +1,54 @@
 package com.pxl.dorienbrugmans.digibonss;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NavUtils;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.util.Log;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+    protected boolean isLightTheme;
+    protected SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setPreferences();
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_settings);
-        setSupportActionBar(toolbar);
-        if (toolbar != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        isLightTheme = sharedPref.getBoolean(getString(R.string.pref_show_bass_key), true);
+        setAppTheme(isLightTheme);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.action_settings);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        sharedPref.registerOnSharedPreferenceChangeListener(this);
     }
 
+    protected void setAppTheme(boolean isLightTheme) {
+        if (isLightTheme) {
+            setTheme(R.style.AppThemeSettings);
+        } else {
+            setTheme(R.style.AppThemeSettingsDark);
+        }
+    }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    protected void onDestroy() {
+        super.onDestroy();
+        sharedPref.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            NavUtils.navigateUpFromSameTask(this);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void setPreferences() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean setTheme = preferences.getBoolean(getString(R.string.pref_show_bass_key),
-                getResources().getBoolean(R.bool.pref_show_bass_default));
-        if (setTheme == true){
-            setTheme(R.style.AppTheme);
-        }
-        else{
-            setTheme(R.style.AppTheme_Dark);
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(getString(R.string.pref_show_bass_key))) {
+            Log.d("Settings - preferences", "Color theme is changed!");
+            recreate();
         }
     }
-
 }

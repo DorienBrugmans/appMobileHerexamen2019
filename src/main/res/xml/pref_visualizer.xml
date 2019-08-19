@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <SwitchPreference
         android:defaultValue="@bool/pref_show_bass_default"
         android:key="@string/pref_show_bass_key"
-        android:title="@string/pref_show_bass_key"
-        android:summaryOff="Dark"
-        android:summaryOn="Light" />
+        android:title="@string/pref_show_bass_key_text"
+        android:text="@string/pref_show_bass_key_text"
+        android:textColor="@color/colorTextDefault"/>
 </PreferenceScreen>

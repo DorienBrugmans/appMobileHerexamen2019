@@ -1,11 +1,8 @@
 package com.pxl.dorienbrugmans.digibonss;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
@@ -13,8 +10,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.Preference;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -146,12 +141,9 @@ public class MainActivity extends AppCompatActivity
             return true;
         } else if (id == R.id.nav_customers) {
             startActivity(new Intent(MainActivity.this, CustomersListRcv.class));
-            /*Context context = MainActivity.this;
-            String message = "You are already in Customers view!";
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();*/
             return true;
         } else if (id == R.id.nav_settings) {
-            // navigate to settings
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -8,8 +8,7 @@
     <color name="colorGreen">#28A650</color>
     <color name="colorBlue">#003FAE</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorTextDefault">#444444</color>
-
+    <color name="colorTextDefault">#222222</color>
     <color name="darkColorPrimary">#870404</color>
     <color name="darkColorPrimaryDark">#580000</color>
     <color name="darkColorAccent">#28A650</color>

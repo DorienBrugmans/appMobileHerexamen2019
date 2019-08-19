@@ -14,16 +14,6 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import static android.support.v4.content.ContextCompat.getSystemService;
 
 
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//import android.app.NotificationManager;
-//import android.support.v4.app.NotificationCompat;
-//import android.view.View;
-//import android.content.Context;
-//import android.app.PendingIntent;
-//import android.content.Intent;
-//import android.net.Uri;
-
 public class SettingsFragment extends PreferenceFragmentCompat implements
         SharedPreferences.OnSharedPreferenceChangeListener {
     private final String CHANNEL_ID = "personal_notifications";
@@ -33,6 +23,20 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         // Add visualizer preferences, defined in the XML file in res->xml->pref_visualizer
         addPreferencesFromResource(R.xml.pref_visualizer);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getPreferenceScreen().getSharedPreferences()
+                .unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getPreferenceScreen().getSharedPreferences()
+                .registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -72,7 +76,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
-
 
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because

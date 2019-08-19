@@ -14,6 +14,7 @@
     <string name="title_customer_list">Customers</string>
     <string name="title_customer_detail">Customer Detail</string>
     <string name="pref_show_bass_key" translatable="false">Color Scheme</string>
+    <string name="pref_show_bass_key_text" translatable="false">Light theme</string>
     <string name="channel_name">Personal notifications</string>
     <string name="channel_description">Include all personal notifications</string>
 </resources>
