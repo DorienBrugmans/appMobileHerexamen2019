@@ -71,6 +71,7 @@ public class CustomersListRcv extends AppCompatActivity implements CustomersList
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            actionBar.setTitle(R.string.action_customers);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
